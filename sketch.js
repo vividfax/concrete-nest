@@ -35,9 +35,6 @@ function setup() {
 function draw() {
 
 	background(colors.light);
-	fill(colors.light);
-	noStroke();
-	rect(width/2, 0, width/2, height);
 
 	if (!nestDrawn) {
 		drawNest();
@@ -122,6 +119,7 @@ function drawButton(x, y, color) {
 
 	textStyle(NORMAL);
 	fill(color)
+	noStroke();
 	rect(x - w/2, y - h/2, w, h, 5);
 	fill(colors.white);
 	textSize(16);
@@ -266,8 +264,10 @@ function drawNest() {
 
 function drawLines(color) {
 
+	let pad = 20;
+
 	for (let i = 0; i < 500; i++) {
 		stroke(color);
-		line(random(width/2, width), random(height), random(width/2, width), random(height));
+		line(random(width/2 + 20, width - pad), random(pad, height - pad), random(width/2 + 20, width - pad), random(pad, height - pad));
 	}
 }
