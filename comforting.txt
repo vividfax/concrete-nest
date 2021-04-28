@@ -128,7 +128,6 @@ effortless
 elation
 elegant
 elixir
-ellipses
 ellipsis
 eloquence
 eloquent
@@ -240,7 +239,6 @@ lovely
 lozenge
 lull
 lullaby
-lulluby
 luminescence
 luxury
 magnificent
@@ -294,7 +292,7 @@ patisserie
 penguins
 penultimate
 perfection
-perservering
+persevering
 petrichor
 phenomenal
 phenomenally
@@ -345,6 +343,7 @@ serendipity
 serene
 serenity
 shimmering
+shiny
 silky
 simmer
 simplicity

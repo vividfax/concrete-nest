@@ -11,12 +11,12 @@ let colors = {
 	black: "#505168",
 	dark: "#597068",
 	medium: "#73856F",
-	light: "#AFBE8F",
+	light: "#A6BD85",
 	white: "#E9EED2"
 }
 
 function preload() {
-	soothing = loadStrings("soothing.txt");
+	soothing = loadStrings("comforting.txt");
 	soothing.pop();
 	common = loadStrings("common.txt");
 	common.pop();
@@ -30,6 +30,8 @@ function setup() {
 
 	createCircles();
 	selectWords();
+
+	playAudio();
 }
 
 function draw() {
@@ -158,7 +160,7 @@ function sortWords() {
 
 		let shift;
 
-		if (nested[i].x < width/2) {
+		if (nested[i].x <= width/2) {
 			shift = nested.splice(i, 1);
 			selected.push(shift[0]);
 		}
@@ -270,4 +272,11 @@ function drawLines(color) {
 		stroke(color);
 		line(random(width/2 + 20, width - pad), random(pad, height - pad), random(width/2 + 20, width - pad), random(pad, height - pad));
 	}
+}
+
+function playAudio() {
+
+	var audio = new Audio("susurration.ogg");
+	audio.loop = true;
+	audio.play();
 }
