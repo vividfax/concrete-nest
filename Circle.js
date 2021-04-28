@@ -8,7 +8,7 @@ class Circle {
     }
 
     display() {
-        fill("red");
+        fill("#fff");
         ellipse(this.x, this.y, this.r);
     }
 }

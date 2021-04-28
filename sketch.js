@@ -87,7 +87,7 @@ function newWord(word) {
 
 	for (i in selected) {
 
-		if (dist(x, y, selected[i].x, selected[i].y) < 25) {
+		if (dist(x, y, selected[i].x, selected[i].y) < 45) {
 			return;
 		}
 	}
