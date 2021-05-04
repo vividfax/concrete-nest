@@ -26,7 +26,7 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	textAlign(CENTER, CENTER);
 	textFont("Courier");
-	textSize(14);
+	textSize(16);
 
 	createCircles();
 	selectWords();
@@ -55,9 +55,8 @@ function draw() {
 	if (nested.length == 0) {
 		drawHint();
 	}
-	let buttonColor = "#777";
-	buttonColor = buttonHover();
-	drawButton(width / 4, height - 40, buttonColor);
+	drawWanderButton(width / 4, height - 40, wanderButtonHover());
+	drawSaveButton(20 + 75, 40, saveButtonHover());
 
 	sortWords();
 	drawWords();
@@ -89,7 +88,7 @@ function newWord(word) {
 
 	for (i in selected) {
 
-		if (dist(x, y, selected[i].x, selected[i].y) < 45) {
+		if (dist(x, y, selected[i].x, selected[i].y) < 55) {
 			return;
 		}
 	}
@@ -114,7 +113,7 @@ function drawHint() {
 	text("drag and drop words\nto arrange your nest", width/4*3, height/2);
 }
 
-function drawButton(x, y, color) {
+function drawWanderButton(x, y, color) {
 
 	let w = 150;
 	let h = 40;
@@ -126,10 +125,10 @@ function drawButton(x, y, color) {
 	fill(colors.white);
 	textSize(16);
 	text("wander", x, y);
-	textSize(14);
+	textSize(16);
 }
 
-function buttonHover() {
+function wanderButtonHover() {
 
 	if (mouseX > width/4 - 150/2 && mouseX < width/4 + 150/2 && mouseY > height - 40 - 40/2 && mouseY < height - 40 + 40/2) {
 		return colors.medium;
@@ -138,10 +137,38 @@ function buttonHover() {
 	}
 }
 
+function drawSaveButton(x, y, color) {
+
+	let w = 150;
+	let h = 40;
+
+	textStyle(NORMAL);
+	fill(color)
+	noStroke();
+	rect(x - w/2, y - h/2, w, h, 5);
+	fill(colors.dark);
+	textSize(16);
+	text("save image", x, y);
+	textSize(16);
+}
+
+function saveButtonHover() {
+
+	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
+		return "#fff";
+	} else {
+		return colors.white;
+	}
+}
+
 function mouseClicked() {
 
 	if (mouseX > width/4 - 150/2 && mouseX < width/4 + 150/2 && mouseY > height - 40 - 40/2 && mouseY < height - 40 + 40/2) {
 		refreshWords();
+	}
+	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
+		let image = get(width/2, 0, width/2, height);
+		save(image, "nest.png");
 	}
 }
 
