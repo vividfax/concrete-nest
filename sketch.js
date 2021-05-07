@@ -47,12 +47,6 @@ function draw() {
 	} else {
 		updatePixels();
 	}
-	// drawDate();
-
-	// for (i in circles) {
-	// 	circles[i].display();
-	// }
-
 	if (nested.length == 0) {
 		drawHint();
 	}
@@ -109,12 +103,28 @@ function newWord(word) {
 
 function drawDate() {
 
-	let date = join([day(), month(), year()], ".").trim();
+	let weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+	let months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+	let d = new Date();
+	let suffix;
+
+	if (d.getDate() == 1) {
+		suffix = "st";
+	} else if (d.getDate() == 2) {
+		suffix = "nd";
+	} else if (d.getDate() == 3) {
+		suffix = "rd";
+	} else {
+		suffix = "th";
+	}
+	let date = join([weekdays[d.getDay()], d.getDate() + suffix, months[d.getMonth()], d.getFullYear()], " ");
+
 	textStyle(NORMAL);
 	textAlign(RIGHT, BOTTOM);
 	textSize(12);
-	fill(colors.white);
-	text(date, width - 10, height - 10);
+	fill("#D3DEB8");
+	text(date, width - 20, height - 10);
 	textAlign(CENTER, CENTER);
 }
 
