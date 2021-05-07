@@ -47,6 +47,7 @@ function draw() {
 	} else {
 		updatePixels();
 	}
+	// drawDate();
 
 	// for (i in circles) {
 	// 	circles[i].display();
@@ -106,9 +107,21 @@ function newWord(word) {
 	return selected.push(new Word(word, x, y));
 }
 
+function drawDate() {
+
+	let date = join([day(), month(), year()], ".").trim();
+	textStyle(NORMAL);
+	textAlign(RIGHT, BOTTOM);
+	textSize(12);
+	fill(colors.white);
+	text(date, width - 10, height - 10);
+	textAlign(CENTER, CENTER);
+}
+
 function drawHint() {
 
 	textStyle(NORMAL);
+	textSize(16);
 	fill(colors.white);
 	text("drag and drop words\nto arrange your nest", width/4*3, height/2);
 }
@@ -119,10 +132,15 @@ function drawWanderButton(x, y, color) {
 	let h = 40;
 
 	textStyle(NORMAL);
-	fill(color)
+	fill(color);
 	noStroke();
 	rect(x - w/2, y - h/2, w, h, 5);
-	fill(colors.white);
+
+	if (color == colors.medium) {
+		fill(colors.white);
+	} else {
+		noFill();
+	}
 	textSize(16);
 	text("wander", x, y);
 	textSize(16);
@@ -133,7 +151,7 @@ function wanderButtonHover() {
 	if (mouseX > width/4 - 150/2 && mouseX < width/4 + 150/2 && mouseY > height - 40 - 40/2 && mouseY < height - 40 + 40/2) {
 		return colors.medium;
 	} else {
-		return colors.dark;
+		return "#849876";
 	}
 }
 
@@ -146,8 +164,12 @@ function drawSaveButton(x, y, color) {
 	fill(color)
 	noStroke();
 	rect(x - w/2, y - h/2, w, h, 5);
-	fill(colors.dark);
-	textSize(16);
+
+	if (color == colors.white) {
+		fill(colors.dark);
+	} else {
+		noFill();
+	}textSize(16);
 	text("save image", x, y);
 	textSize(16);
 }
@@ -155,9 +177,9 @@ function drawSaveButton(x, y, color) {
 function saveButtonHover() {
 
 	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
-		return "#fff";
-	} else {
 		return colors.white;
+	} else {
+		return "#C8D6AC";
 	}
 }
 
@@ -167,6 +189,7 @@ function mouseClicked() {
 		refreshWords();
 	}
 	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
+		drawDate();
 		let image = get(width/2, 0, width/2, height);
 		save(image, "nest.png");
 	}
