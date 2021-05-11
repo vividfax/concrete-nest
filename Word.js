@@ -33,8 +33,10 @@ class Word {
 
     intersect(x, y) {
 
-        let xIntersect = x > this.x - textWidth(this.word)/2 && x < this.x + textWidth(this.word)/2;
-        let yIntersect = y > this.y - textSize(this.word)/2 && y < this.y + textSize(this.word)/2;
+        let radius = 3;
+
+        let xIntersect = x > this.x - textWidth(this.word)/2 - radius && x < this.x + textWidth(this.word)/2 + radius;
+        let yIntersect = y > this.y - textSize(this.word)/2 - radius && y < this.y + textSize(this.word)/2 + radius;
 
         if (xIntersect && yIntersect) {
             return true;
