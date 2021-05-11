@@ -67,7 +67,7 @@ function selectWords() {
 		newWord(random(soothing), 16);
 	}
 	for (let i = 0; i < 5; i++) {
-		newWord(random(symbols), 24);
+		newWord(random(symbols), 20);
 	}
 	for (let i = 2; i < 300; i++) {
 		newWord(random(common), 16);
