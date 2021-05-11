@@ -1,4 +1,5 @@
 let soothing = [];
+let symbols = [];
 let common = [];
 let selected = [];
 let nested = [];
@@ -20,6 +21,8 @@ function preload() {
 	soothing.pop();
 	common = loadStrings("common.txt");
 	common.pop();
+	symbols = loadStrings("symbols.txt");
+	symbols.pop();
 }
 
 function setup() {
@@ -61,10 +64,13 @@ function draw() {
 function selectWords() {
 
 	for (let i = 0; i < 5; i++) {
-		newWord(random(soothing));
+		newWord(random(soothing), 16);
+	}
+	for (let i = 0; i < 5; i++) {
+		newWord(random(symbols), 24);
 	}
 	for (let i = 2; i < 300; i++) {
-		newWord(random(common));
+		newWord(random(common), 16);
 	}
 }
 
@@ -76,7 +82,7 @@ function refreshWords() {
 	selectWords();
 }
 
-function newWord(word) {
+function newWord(word, fontSize) {
 
 	let x = random(width)/4 + width/8;
 	let y = random(height)/2 + height/4;
@@ -98,7 +104,7 @@ function newWord(word) {
 	if (!inCircle) {
 		return;
 	}
-	return selected.push(new Word(word, x, y));
+	return selected.push(new Word(word, x, y, fontSize));
 }
 
 function drawDate() {
@@ -335,7 +341,6 @@ function drawLines(color) {
 }
 
 function playAudio() {
-
 	var audio = new Audio("susurration.ogg");
 	audio.loop = true;
 	audio.play();
