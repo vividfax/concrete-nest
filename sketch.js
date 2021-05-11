@@ -199,7 +199,7 @@ function mouseClicked() {
 		refreshWords();
 	}
 	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
-		drawDate();
+		// drawDate();
 		let image = get(width/2, 0, width/2, height);
 		save(image, "nest.png");
 	}
