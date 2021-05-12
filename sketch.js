@@ -66,8 +66,10 @@ function selectWords() {
 	for (let i = 0; i < 5; i++) {
 		newWord(random(soothing), 16);
 	}
-	for (let i = 0; i < 5; i++) {
-		newWord(random(symbols), 20);
+	if (random() > .5) {
+		for (let i = 0; i < 1; i++) {
+			newWord(random(symbols), 20);
+		}
 	}
 	for (let i = 2; i < 300; i++) {
 		newWord(random(common), 16);
@@ -105,33 +107,6 @@ function newWord(word, fontSize) {
 		return;
 	}
 	return selected.push(new Word(word, x, y, fontSize));
-}
-
-function drawDate() {
-
-	let weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-	let months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-
-	let d = new Date();
-	let suffix;
-
-	if (d.getDate() == 1) {
-		suffix = "st";
-	} else if (d.getDate() == 2) {
-		suffix = "nd";
-	} else if (d.getDate() == 3) {
-		suffix = "rd";
-	} else {
-		suffix = "th";
-	}
-	let date = join([weekdays[d.getDay()], d.getDate() + suffix, months[d.getMonth()], d.getFullYear()], " ");
-
-	textStyle(NORMAL);
-	textAlign(RIGHT, BOTTOM);
-	textSize(12);
-	fill("#D3DEB8");
-	text(date, width - 20, height - 10);
-	textAlign(CENTER, CENTER);
 }
 
 function drawHint() {
@@ -205,7 +180,6 @@ function mouseClicked() {
 		refreshWords();
 	}
 	if (mouseX > 20 && mouseX < 20+150 && mouseY > 20 && mouseY < 20 + 40) {
-		// drawDate();
 		let image = get(width/2, 0, width/2, height);
 		save(image, "nest.png");
 	}
