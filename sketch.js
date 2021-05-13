@@ -38,7 +38,6 @@ function setup() {
 }
 
 function draw() {
-
 	background(colors.light);
 
 	if (!nestDrawn) {
@@ -53,8 +52,8 @@ function draw() {
 	if (nested.length == 0) {
 		drawHint();
 	}
+	else {drawSaveButton(20 + 75, 40, saveButtonHover());}
 	drawWanderButton(width / 4, height - 40, wanderButtonHover());
-	drawSaveButton(20 + 75, 40, saveButtonHover());
 
 	sortWords();
 	drawWords();
