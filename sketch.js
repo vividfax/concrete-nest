@@ -276,19 +276,32 @@ function mouseReleased() {
 }
 
 function mouseDragged() {
-
+	let selectionCounter = 0;
+	let offset = 0;
 	for (i in selected) {
 		if (selected[i].drag) {
+			selectionCounter++;
+			offset = getOffset(selectionCounter);
 			selected[i].x = mouseX;
-			selected[i].y = mouseY;
+			selected[i].y = mouseY + offset;
 		}
 	}
+	selectionCounter = 0;
 	for (i in nested) {
 		if (nested[i].drag) {
+			selectionCounter++;
+			offset = getOffset(selectionCounter);
 			nested[i].x = mouseX;
-			nested[i].y = mouseY;
+			nested[i].y = mouseY + offset;
 		}
 	}
+}
+
+function getOffset(numberOfItems) {
+	if (numberOfItems > 1) {
+		return (numberOfItems-1) * 4; // moves the word 4 pixels down
+	}
+	else return 0;
 }
 
 function drawNest() {
