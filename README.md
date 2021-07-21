@@ -1,3 +1,3 @@
-# Leftover Loot
+# Concrete Nest
 
-A concrete poetry game about comfort and waste.
+A concrete poetry tool for gathering thoughts.
